@@ -1,0 +1,17 @@
+[Unit]
+Description=Wooting Competitive Discord Bot
+After=network.target
+
+[Service]
+Type=simple
+User=wooting
+WorkingDirectory=/opt/wooting-competitive
+Environment=NODE_ENV=production
+Environment=PORT=8080
+EnvironmentFile=/opt/wooting-competitive/.env
+ExecStart=/usr/bin/node --enable-source-maps /opt/wooting-competitive/dist/index.mjs
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
